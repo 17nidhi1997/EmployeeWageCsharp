@@ -7,25 +7,27 @@ namespace empwage
         //constants
         public const int IS_PRESENT = 1;
         public const int WORKING_DAYS = 20;
+        public const int IS_PARTTIME = 1;
+        public const int IS_FULLTIME = 2;
         static void Main(string[] args)
         {
             //variables
             int empHrs;
             int salary;
-             //USECASE 3: Add part time employee and wage
-            int attendance = random.Next(1, 3);
-
-            if (attendance == IS_PARTTIME)
+            int employeeType;
+            //USECASE 4: solve using case statment
+            employeeType = (random.Next() % 3);
+            switch (attendance)
             {
-                empHrs = 4;
-            }
-            else if (attendance == IS_FULLTIME)
-            {
-                empHrs = 8;
-            }
-            else
-            {
-                empHrs = 0;
+                case IS_PARTTIME:
+                    empHrs = 4;
+                    break;
+                case IS_FULLTIME:
+                    empHrs = 8;
+                    break;
+                default:
+                    empHrs = 0;
+                    break;
 
             }
             salary = (WORKING_DAYS * empHrs);
