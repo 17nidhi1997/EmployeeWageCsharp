@@ -10,43 +10,39 @@ namespace empwage
         public const int IS_PARTTIME = 1;
         public const int IS_FULLTIME = 2;
         public const int WAGE_PER_HOUR = 20;
+
+        public static int getWorksHrs()
+        {
+            Random random = new Random();
+            int emphrs = 0;
+            int Empvalue = (random.Next() % 3);
+            switch(Empvalue)   
+            {
+                case IS_PARTTIME: emphrs = 4;
+                    break;
+                case IS_FULLTIME:emphrs = 8;
+                    break;
+                default:emphrs = 0;
+                    break;
+            }
+            return emphrs;
+        }
         static void Main(string[] args)
         {
-            //variables
-            int empHrs;
-            int salary;
-            int employeeType;
+            //variable
             int monthlySalary = 0;
             int totalEmpHrs = 0;
             int totalWorkingDays = 0;
 
-            //USECASE 6:Calculate wage till a condition of total working hrs or days is reached for a month           
-            employeeType = (random.Next() % 3);
-               while (totalEmpHrs < MAX_HRS_IN_MONTH && totalEmpHrs < WORKING_DAYS)
-                {
-                    totalWorkingDays++;
-                    Random random=new Random();
-                    employeeType = (random.Next() % 3);
-                    switch (employeeType)
-                    {
-
-                        case IS_FULLTIME:
-                            empHrs = 8;
-                            break;
-                        case IS_PARTTIME:
-                            empHrs = 4;
-                            break;
-
-                        default:
-                            empHrs = 0;
-                            break;
-                    }
-
-                    salary = WAGE_PER_HOUR * empHrs;
-                    totalEmpHrs = totalEmpHrs + empHrs;                   
-                }
-                monthlySalary = WORKING_DAYS * salary;
-                Console.WriteLine("Calculate wage till working hrs or days is reached for a month: {0} ", monthlySalary);
+            //USECASE 7: Rector the code to write a function to get work hours
+            while(totalWorkingDays < MAX_HRS_IN_MONTH && totalWorkingDays < WORKING_DAYS)
+            {
+                totalWorkingDays++;
+                int Hrs = getWorksHrs();
+                totalEmpHrs = totalEmpHrs * Hrs;
+            }
+            monthlySalary = WAGE_PER_HOUR * totalEmpHrs;
+            Console.WriteLine("Calculate wage till working hrs or days is reached for a month: {0} ", monthlySalary);
         }
     }
 }
