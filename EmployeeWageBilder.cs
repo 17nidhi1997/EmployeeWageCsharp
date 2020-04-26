@@ -5,18 +5,25 @@ namespace empwage
     class Program
     {
         public const int IS_PRESENT = 1;
+        public const int WORKING_DAYS = 20;
         static void Main(string[] args)
         {
-            //USECASE 1: check Employee is present or absent            
-            Random random = new Random();
-            int attendance =(random.Next() % 2);
+            //USECASE 2: Calculate Daily employee wage
+            int empHrs;
+            int salary;
+            attendance = random.Next(1, 2);
             if (attendance == IS_PRESENT)
             {
-                Console.WriteLine("Employee is present ");
+
+                empHrs = 8;
+                salary = (WORKING_DAYS * empHrs);
             }
             else
             {
-                Console.WriteLine("Employee is absent");
+                salary = 0;
             }
+            Console.WriteLine("Employee dialy wage is :{0}", salary);
         }
+    }
 }
+
