@@ -5,44 +5,45 @@ namespace empwage
     class Program
     {
         //constants
-        public const int IS_PRESENT = 1;
-        public const int WORKING_DAYS = 20;
         public const int IS_PARTTIME = 1;
         public const int IS_FULLTIME = 2;
-        public const int WAGE_PER_HOUR = 20;
 
-        public static int getWorksHrs()
+        public static int empHrs;
+        public static int empWage;
+        public static int montlysalary;
+        public static void calcEmployeeWageForCompany(String companyName, int empRate, int WORKING_DAYS, int MAX_HRS_IN_MONTH)
         {
-            Random random = new Random();
-            int emphrs = 0;
-            int Empvalue = (random.Next() % 3);
-            switch(Empvalue)   
+            //variables
+            int totalWorkingDays = 0;
+            while (totalWorkingDays <= MAX_HRS_IN_MONTH && totalWorkingDays <= WORKING_DAYS)
             {
-                case IS_PARTTIME: emphrs = 4;
-                    break;
-                case IS_FULLTIME:emphrs = 8;
-                    break;
-                default:emphrs = 0;
-                    break;
+                totalWorkingDays++;
+                Random random = new Random();
+                int empType = (random.Next() % 2);
+                switch (empType)
+                {
+                    case IS_FULL_TIME:
+                        empHrs = 8;
+                        break;
+                    case IS_PART_TIME:
+                        empHrs = 4;
+                        break;
+                   default : empHrs =0;
+                          break;
+                }
             }
-            return emphrs;
+            empWage = empHrs * empRate;
+            montlysalary = empWage * WORKING_DAYS;
+            Console.WriteLine("COMPANY NAME:"+ companyName + "----EMPWAGE:" +empWage+"------MONTLY WAGE:" +montlysalary);
         }
         static void Main(string[] args)
         {
-            //variable
-            int monthlySalary = 0;
-            int totalEmpHrs = 0;
-            int totalWorkingDays = 0;
-
-            //USECASE 7: Rector the code to write a function to get work hours
-            while(totalWorkingDays < MAX_HRS_IN_MONTH && totalWorkingDays < WORKING_DAYS)
-            {
-                totalWorkingDays++;
-                int Hrs = getWorksHrs();
-                totalEmpHrs = totalEmpHrs * Hrs;
-            }
-            monthlySalary = WAGE_PER_HOUR * totalEmpHrs;
-            Console.WriteLine("Calculate wage till working hrs or days is reached for a month: {0} ", monthlySalary);
+            //USECASE 8:Compute Employee Wage for multiple companies
+            calcEmployeeWageForCompany("BridgeLabz", 20, 20, 100);
+            calcEmployeeWageForCompany("Wipro", 30, 10, 55);
+            calcEmployeeWageForCompany("D-Mart", 20, 30, 150);
         }
     }
 }
+
+
