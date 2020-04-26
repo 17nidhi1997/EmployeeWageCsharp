@@ -15,23 +15,28 @@ namespace empwage
             int empHrs;
             int salary;
             int employeeType;
-            //USECASE 4: solve using case statment
-            employeeType = (random.Next() % 3);
-            switch (attendance)
+            int monthlySalary = 0;
+            int day;
+            //USECASE 5: Calculating Wages for a month   
+            for (day = 1; day <= WORKING_DAYS; day++)
             {
-                case IS_PARTTIME:
-                    empHrs = 4;
-                    break;
-                case IS_FULLTIME:
-                    empHrs = 8;
-                    break;
-                default:
-                    empHrs = 0;
-                    break;
-
+                attendance = random.Next(1, 3);
+                switch (attendance)
+                {
+                    case IS_PARTTIME:
+                        empHrs = 80;
+                        break;
+                    case IS_FULLTIME:
+                        empHrs = 160;
+                        break;
+                    default:
+                        empHrs = 0;
+                        break;
+                }
             }
-            salary = (WORKING_DAYS * empHrs);
-            Console.WriteLine("Employee dialy wage:{0}", salary);
+            salary = WORKING_DAYS * empHrs;
+            monthlySalary = (monthlySalary + salary);
+            Console.WriteLine("Employee monthly wage:{0}", monthlySalary);
         }
     }
 }
