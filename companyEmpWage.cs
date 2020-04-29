@@ -15,10 +15,8 @@ namespace EmployeeWage
         public int MAX_WORKING_HRS;
         public int empWage;
         public int totalWage = 0;
-       
         int empWages;
         int empHrs;
-        
         public companyEmpWage(String companyName, int empRate, int WORKING_DAYS, int MAX_WORKING_HRS)
         {
             this.companyName = companyName;
@@ -36,13 +34,11 @@ namespace EmployeeWage
             empHrs = getEmployeeHours(empType);
              for (int totalEmp=1; totalEmp <= WORKING_DAYS; totalEmp++)
             {
-                totalWorkingDays++;                
+                totalWorkingDays++;
                 totalEmpHrs += empHrs;
                 empWage = empHrs * empRate;
                 totalWage += empWage;
-               
             }
-          
             return "Day" + totalWorkingDays + "company Name :" + companyName + " Montly Wage " + totalWage + " Dialy wage " +empWage;
 
         }
