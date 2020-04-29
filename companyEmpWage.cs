@@ -8,17 +8,17 @@ namespace EmployeeWage
     {
         public const int IS_FULL_TIME = 1;
         public const int IS_PART_TIME = 2;
-
         //variable
-        private string companyName;
-        private int empRate;
-        private int WORKING_DAYS;
-        private int MAX_WORKING_HRS;
+        public string companyName;
+        public int empRate;
+        public int WORKING_DAYS;
+        public int MAX_WORKING_HRS;
         public int empWage;
-
-        //variables
+        public int totalWage = 0;
+       
+        int empWages;
         int empHrs;
-        int totalWage = 0;
+        
         public companyEmpWage(String companyName, int empRate, int WORKING_DAYS, int MAX_WORKING_HRS)
         {
             this.companyName = companyName;
@@ -40,10 +40,11 @@ namespace EmployeeWage
                 totalEmpHrs += empHrs;
                 empWage = empHrs * empRate;
                 totalWage += empWage;
-                
+               
             }
           
-            return "Day" + totalWorkingDays + " employee wage for company :" + companyName + " is = " + totalWage ;
+            return "Day" + totalWorkingDays + "company Name :" + companyName + " Montly Wage " + totalWage + " Dialy wage " +empWage;
+
         }
 
         public int getEmployeeHours(int empType)
@@ -52,9 +53,11 @@ namespace EmployeeWage
             {
                 case IS_FULL_TIME:
                     empHrs = 8;
+                    empWages = empRate * empHrs;
                     break;
                 case IS_PART_TIME:
                     empHrs = 4;
+                    empWages = empRate * empHrs;
                     break;
                 default:
                     empHrs = 0;
@@ -65,3 +68,4 @@ namespace EmployeeWage
         }
     }
 }
+
