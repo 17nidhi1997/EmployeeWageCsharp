@@ -4,13 +4,13 @@ namespace EmployeeWage
 {
     class EmployeeWageBuilder
     {
-         static void Main(string[] args)
+        static void Main(string[] args)
         {
             ArrayList comp_obj = new ArrayList();
             Console.WriteLine("num of company");
             int num_of_company = Convert.ToInt32(Console.ReadLine());
             for (int index = 0; index < num_of_company; index++)
-                {
+            {
                 Console.WriteLine("Enter the company name");
                 String companyName = Console.ReadLine();
                 Console.WriteLine("Enter the Employee wage per hour");
@@ -21,9 +21,22 @@ namespace EmployeeWage
                 int max_Working_Hrs = Convert.ToInt32(Console.ReadLine());
                 comp_obj.Add(new companyEmpWage(companyName, empRate, WorkingDays, max_Working_Hrs));
             }
+
             foreach (companyEmpWage item in comp_obj)
             {
+
                 Console.WriteLine(item.calcEmployeeWageForCompany());
+            }
+            Console.WriteLine("Enter the Company Name to get details");
+            string checkCompsnyName = Console.ReadLine();
+
+            foreach (companyEmpWage items in comp_obj)
+            {
+                if (items.companyName == checkCompsnyName)
+                {
+                    Console.WriteLine("Dialy wage of :"+checkCompsnyName+" is " +items.empWage+ " and also montly wage is " +items.totalWage);
+                }
+                else { }
             }
         }
     }
