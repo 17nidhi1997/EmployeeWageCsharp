@@ -6,9 +6,11 @@ namespace EmployeeWage
     {
          static void Main(string[] args)
         {
-            ArrayList comp_obj = new ArrayList();           
-            for (int index = 0; index < 2; index++)
-            {
+            ArrayList comp_obj = new ArrayList();
+            Console.WriteLine("num of company");
+            int num_of_company = Convert.ToInt32(Console.ReadLine());
+            for (int index = 0; index < num_of_company; index++)
+                {
                 Console.WriteLine("Enter the company name");
                 String companyName = Console.ReadLine();
                 Console.WriteLine("Enter the Employee wage per hour");
